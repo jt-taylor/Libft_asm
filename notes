@@ -1,0 +1,138 @@
+//links ------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// Hello world -----------------------------------------------------------------
+section .data
+text db "Hellow World!",10
+section .text
+	global _start
+_start:
+mov rax, 1
+mov rdi, 1
+mov rsi, text
+mov rdx, 14
+syscall
+
+mov rax, 60
+mov rdi, 0
+syscall
+
+;the syscalls take arguments like this
+;id of syscall is rax
+;then each succsussive arugemnt is in the following  register
+;1st arg rdi
+;2nd arg rsi
+;.. rdx
+;r10
+;r8
+;r9
+
+;there are three .define sections
+;	.text for the actual code
+;	.data for predefined data goes , is replaced in compilation
+;	.bss  is data allocated for furture use
+
+;label is for "labeling" sections of code (who knew ?)
+;	might as well be function names right
+;	is swapped out in the compiler
+;_start label is the int main() for asm every program needs _start
+;global tells the linker to keep track of the address of the label;
+;ie all labels are static unless you specify that they are global, _start has to global for the linker to work properly
+// flags -----------------------------------------------------------------------
+ther is a flags register that stores them as a bit field
+flags are boolean
+// pointers --------------------------------------------------------------------
+the rip register holds a pointer to the next instruction
+the rsp register holds the index of the stack
+the rbp register holds the index of the bottom of the stack
+// jmp's are used to change the controll flow ----------------------------------
+the general format is jmp label
+example _start:
+	jmp _start
+//comparisons ------------------------------------------------------------------
+generall format cmp register value
+or cmp rax rab
+the cmp command set the flags based on the result
+then you make conditional flags
+conditional jmps are the same syntax as the regular jmp command
+// -----------------------------------------------------------------------------
+you can treat registers as their pointers by surrounding them in '[]'
+ie mov rax, rbx moves the value from rbx
+but mvo rax, [rbx] moves the pointer that rbx is holding into rax
+or in simpler terms it moves the value of the pointer stored in the register
+//calls ------------------------------------------------------------------------
+calls are mostly the same as jumps except that the original position can be returned to
+using the ret command
+these are known as subroutines
+// getting user input ----------------------------------------------------------
+syscall for read is 0, works like read in c
+//math -------------------------------------------------------------------------
+format of the math operations is operation register, value/register
+example		add rax, 5; this adds 5 to the value inside of the rax register
+many of the math operations only take one argument and assume that the valuer
+that you're wanting to change is in the rax register, ie mul / div
+mul and div have signed equevilants prefaced with i (imul && idiv)
+neg or negate switches the sign of the var , ie * -1
+there are also adc and sbb that are add and sub respectively but they also include the carrry flag
+//stack ------------------------------------------------------------------------
+push reg/value ; move a value onto the stack
+pop reg ;remove the value from the stack and put it into a register
+mov reg, [rsp] ;peek the value from the stack into reg , but don't remove it from the stack
+you can also use pointers instead of register so [label] insted of register
+// macros ----------------------------------------------------------------------
+macros exist
+the syntax is specific to the assembler
+defineing macros in nasm
+%macro <name> <argc>
+	...
+	...<macro body>
+	...
+%endmacro
+example:
+%macro exit 0
+	mov rax, 60
+	mor rdi, 0
+	syscall
+%endmacro
+args are used a %# or %1 for the first arg
+calling a macro is just the macroi name and the arg list , seperated by commas
+if there are no args for the macro you just use the macro name
+use local labels inside the macros, because when the code is expanded the label is duplicated
+compiler will call it a redifend symbal error
+to make a local label you preface the label with %%
+example
+%macro
+%%_label:
+	do stuff
+%endmacro
+EQU is used to define constant values for future use
+ie the single line macro  example
+STDERR equ 2
+STDOUT equ 1
+STDIN equ 0
+includes are done with the following syntax
+%include "filename.asm"
+you can include at any point in the code
+macros and the equ defines are often in includes
+//
+rdx and the rax register will act as a a128 bit register together, so when you div you have to 
+zero the rdx register first, ie mov rdx, 0
+rdx will hold the remainder of the division
+//
+printing is mostly the same as using rewriting putnbr
+you read the number by dividing by 10(or anouther base) and write it into a buffer
+then you go backwards and print the buffer un reversing the charectors
+// command line args -----------------------------------------------------------
+the args are strings , just like c
+at program start the args are loaded into the stack
+the first item is the arg count
+then the path string
+then the actual argument lists
+it looks to be mostly the same as how it is gonna work in c
+not really related to asm but the backticks are great inside the shell
+add o to the end of the integer to tell nasm that it is an octal number
+
