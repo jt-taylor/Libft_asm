@@ -135,4 +135,59 @@ then the actual argument lists
 it looks to be mostly the same as how it is gonna work in c
 not really related to asm but the backticks are great inside the shell
 add o to the end of the integer to tell nasm that it is an octal number
-
+// file name suiffixes ---------------------------------------------------------
+.a is for static lib's
+.s is used for the asm compiler output (ie gcc -S foo.c makes the .s file
+.S is used for handwritten asm source files , with gcc this runs it through the c preprocessor
+		so uyou can use #include <foo.h> , #if , #define,  and c style comments
+		this lets you include define only headers like asm/unistd.h to get __NR__write syscall define
+.asm is often associated with the nasm/intel syntax and its flavors YASM/MASAM etc.
+.a is for static lib's
+.s is used for the asm compiler output (ie gcc -S foo.c makes the .s file
+.S is used for handwritten asm source files , with gcc this runs it through the c preprocessor
+		so uyou can use #include <foo.h> , #if , #define,  and c style comments
+		this lets you include define only headers like asm/unistd.h to get __NR__write syscall define
+.asm is often associated with the nasm/intel syntax and its flavors YASM/MASAM etc.
+.a is for static lib's
+.s is used for the asm compiler output (ie gcc -S foo.c makes the .s file
+.S is used for handwritten asm source files , with gcc this runs it through the c preprocessor
+		so uyou can use #include <foo.h> , #if , #define,  and c style comments
+		this lets you include define only headers like asm/unistd.h to get __NR__write syscall define
+.asm is often associated with the nasm/intel syntax and its flavors YASM/MASAM etc.
+.a is for static lib's
+.s is used for the asm compiler output (ie gcc -S foo.c makes the .s file
+.S is used for handwritten asm source files , with gcc this runs it through the c preprocessor
+		so uyou can use #include <foo.h> , #if , #define,  and c style comments
+		this lets you include define only headers like asm/unistd.h to get __NR__write syscall define
+.asm is often associated with the nasm/intel syntax and its flavors YASM/MASAM etc.
+.a is for static lib's
+.s is used for the asm compiler output (ie gcc -S foo.c makes the .s file
+.S is used for handwritten asm source files , with gcc this runs it through the c preprocessor
+		so uyou can use #include <foo.h> , #if , #define,  and c style comments
+		this lets you include define only headers like asm/unistd.h to get __NR__write syscall define
+.asm is often associated with the nasm/intel syntax and its flavors YASM/MASAM etc.
+.a is for static lib's
+.s is used for the asm compiler output (ie gcc -S foo.c makes the .s file
+.S is used for handwritten asm source files , with gcc this runs it through the c preprocessor
+		so uyou can use #include <foo.h> , #if , #define,  and c style comments
+		this lets you include define only headers like asm/unistd.h to get __NR__write syscall define
+.asm is often associated with the nasm/intel syntax and its flavors YASM/MASAM etc.
+.a is for static lib's
+.s is used for the asm compiler output (ie gcc -S foo.c makes the .s file
+.S is used for handwritten asm source files , with gcc this runs it through the c preprocessor
+		so uyou can use #include <foo.h> , #if , #define,  and c style comments
+		this lets you include define only headers like asm/unistd.h to get __NR__write syscall define
+.asm is often associated with the nasm/intel syntax and its flavors YASM/MASAM etc.
+.a is for static lib's
+.s is used for the asm compiler output (ie gcc -S foo.c makes the .s file
+.S is used for handwritten asm source files , with gcc this runs it through the c preprocessor
+		so uyou can use #include <foo.h> , #if , #define,  and c style comments
+		this lets you include define only headers like asm/unistd.h to get __NR__write syscall define
+.asm is often associated with the nasm/intel syntax and its flavors YASM/MASAM etc.
+.a is for static lib's
+.s is used for the asm compiler output (ie gcc -S foo.c makes the .s file, not reccomended because this is the defualt name when compiling into asm
+.S is used for handwritten asm source files , with gcc this runs it through the c preprocessor
+		so uyou can use #include <foo.h> , #if , #define,  and c style comments
+		this lets you include define only headers like asm/unistd.h to get __NR__write syscall define
+.asm is often associated with the nasm/intel syntax and its flavors YASM/MASAM etc.
+but for this we have to use the .s files
